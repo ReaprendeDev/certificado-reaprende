@@ -4,7 +4,7 @@
   "name": "certificado",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {},
   "scripts": {
     "start": "node src/index.js"
