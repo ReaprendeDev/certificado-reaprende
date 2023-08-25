@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
         const jsonData = JSON.parse(body);
         generatePdf(jsonData, (pdfBuffer) => {
           res.setHeader('Content-Type', 'application/pdf');
-          res.setHeader('Content-Disposition', 'inline; filename=generated.pdf');
+          res.setHeader('Content-Disposition', 'attachment; filename=generated.pdf'); // Cambiar 'inline' a 'attachment'
           res.end(pdfBuffer);
         });
       } catch (error) {
