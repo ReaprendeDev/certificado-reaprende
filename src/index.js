@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const pdfmake = require('pdfmake');
+const { v4: uuidv4 } = require('uuid');
 
 const server = http.createServer((req, res) => {
   if (req.method === 'POST' && req.url === '/src/index') {
@@ -14,13 +15,34 @@ const server = http.createServer((req, res) => {
       try {
         const jsonData = JSON.parse(body);
         generatePdf(jsonData, (pdfBuffer) => {
-          res.setHeader('Content-Type', 'application/pdf');
-          res.setHeader('Content-Disposition', 'attachment; filename=generated.pdf'); // Cambiar 'inline' a 'attachment'
-          res.end(pdfBuffer);
+          const fileName = `generated_${uuidv4()}.pdf`;
+          const filePath = `./temp/${fileName}`;
+
+          fs.writeFileSync(filePath, pdfBuffer);
+
+          const downloadLink = `/download/${fileName}`;
+          const jsonResponse = { downloadLink };
+
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify(jsonResponse));
         });
       } catch (error) {
         res.statusCode = 400;
         res.end('Error en los datos JSON.');
+      }
+    });
+  } else if (req.method === 'GET' && req.url.startsWith('/download/')) {
+    const fileName = req.url.split('/').pop();
+    const filePath = `./temp/${fileName}`;
+
+    fs.access(filePath, fs.constants.R_OK, (err) => {
+      if (!err) {
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
+        fs.createReadStream(filePath).pipe(res);
+      } else {
+        res.statusCode = 404;
+        res.end('Archivo no encontrado.');
       }
     });
   } else {
@@ -34,7 +56,7 @@ server.listen(3000, () => {
 });
 
 function generatePdf(data, callback) {
-  const backgroundImagePath = './src/background_image.txt'; // Ruta al archivo de imagen de fondo en base64
+  const backgroundImagePath = './src/background_image.txt';
   const backgroundImageData = fs.readFileSync(backgroundImagePath, 'utf-8');
 
   const fonts = {
@@ -49,21 +71,20 @@ function generatePdf(data, callback) {
   const pdfDefinition = {
     pageOrientation: 'landscape',
     pageSize: 'A4',
-    pageMargins: [0, 0, 0, 0], // Sin márgenes
+    pageMargins: [0, 0, 0, 0],
     content: [
       {
         image: backgroundImageData,
-        width: 842, // Ancho de A4 en modo paisaje
-        height: 595, // Alto de A4 en modo paisaje
-        absolutePosition: { x: 0, y: 0 }, // Colocar la imagen en la parte superior izquierda
+        width: 842,
+        height: 595,
+        absolutePosition: { x: 0, y: 0 },
       },
       {
         text: `${data.nombre}`,
         fontSize: 32,
         alignment: 'center',
-        absolutePosition: { x: 0, y: 250 }, // Ajusta la posición del texto encima de la imagen
+        absolutePosition: { x: 0, y: 250 },
       },
-      // Puedes agregar más contenido aquí según tus necesidades
     ],
   };
 
