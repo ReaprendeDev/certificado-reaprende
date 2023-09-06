@@ -1,8 +1,0 @@
-{
-    "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
-        ".vscode{,/**}"
-    ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/c1547ba8-581e-4a29-bdff-5816aeab5a41/resourceGroups/CertificadoRe_group/providers/Microsoft.Web/sites/CertificadoRe",
-    "appService.deploySubpath": "src"
-}
