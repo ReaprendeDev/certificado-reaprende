@@ -4,7 +4,7 @@ const pdfmake = require('pdfmake');
 const { v4: uuidv4 } = require('uuid');
 
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/src/index') {
+  if (req.method === 'POST' && req.url === '/src/index.js') {
     let body = '';
 
     req.on('data', (chunk) => {
