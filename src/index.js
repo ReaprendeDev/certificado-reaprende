@@ -56,49 +56,56 @@ server.listen(3000, () => {
 });
 
 function generatePdf(data, callback) {
-  const backgroundImagePath = './src/background_image.txt';
-  const backgroundImageData = fs.readFileSync(backgroundImagePath, 'utf-8');
+  const curso = data.curso || 1; // Valor predeterminado: 1
+  const backgroundImagePath = `./src/background_image${curso}.txt`;
 
-  const fonts = {
-    Roboto: {
-      normal: './node_modules/roboto-font/fonts/Roboto/roboto-regular-webfont.ttf',
-      bold: './node_modules/roboto-font/fonts/Roboto/roboto-bold-webfont.ttf',
-    },
-  };
+  try {
+    const backgroundImageData = fs.readFileSync(backgroundImagePath, 'utf-8');
 
-  const pdfMake = new pdfmake(fonts);
-
-  const pdfDefinition = {
-    pageOrientation: 'landscape',
-    pageSize: 'A4',
-    pageMargins: [0, 0, 0, 0],
-    content: [
-      {
-        image: backgroundImageData,
-        width: 842,
-        height: 595,
-        absolutePosition: { x: 0, y: 0 },
+    const fonts = {
+      Roboto: {
+        normal: './node_modules/roboto-font/fonts/Roboto/roboto-regular-webfont.ttf',
+        bold: './node_modules/roboto-font/fonts/Roboto/roboto-bold-webfont.ttf',
       },
-      {
-        text: `${data.nombre}`,
-        fontSize: 32,
-        alignment: 'center',
-        absolutePosition: { x: 0, y: 250 },
-      },
-    ],
-  };
+    };
 
-  const pdfDoc = pdfMake.createPdfKitDocument(pdfDefinition);
+    const pdfMake = new pdfmake(fonts);
 
-  const chunks = [];
-  pdfDoc.on('data', (chunk) => {
-    chunks.push(chunk);
-  });
+    const pdfDefinition = {
+      pageOrientation: 'landscape',
+      pageSize: 'A4',
+      pageMargins: [0, 0, 0, 0],
+      content: [
+        {
+          image: backgroundImageData,
+          width: 842,
+          height: 595,
+          absolutePosition: { x: 0, y: 0 },
+        },
+        {
+          text: `${data.nombre}`,
+          fontSize: 32,
+          alignment: 'center',
+          absolutePosition: { x: 160, y: 220 },
+        },
+      ],
+    };
 
-  pdfDoc.on('end', () => {
-    const pdfBuffer = Buffer.concat(chunks);
-    callback(pdfBuffer);
-  });
+    const pdfDoc = pdfMake.createPdfKitDocument(pdfDefinition);
 
-  pdfDoc.end();
+    const chunks = [];
+    pdfDoc.on('data', (chunk) => {
+      chunks.push(chunk);
+    });
+
+    pdfDoc.on('end', () => {
+      const pdfBuffer = Buffer.concat(chunks);
+      callback(pdfBuffer);
+    });
+
+    pdfDoc.end();
+  } catch (error) {
+    console.error('Error al leer el archivo de fondo:', error);
+    throw error;
+  }
 }
