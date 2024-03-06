@@ -71,6 +71,10 @@ function generatePdf(data, callback) {
 
     const pdfMake = new pdfmake(fonts);
 
+    const date = new Date();
+    const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const formattedDate = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
+
     const pdfDefinition = {
       pageOrientation: 'landscape',
       pageSize: 'A4',
@@ -87,6 +91,13 @@ function generatePdf(data, callback) {
           fontSize: 32,
           alignment: 'center',
           absolutePosition: { x: 160, y: 220 },
+        },
+        {
+          text: formattedDate, // Agregar la fecha
+          fontSize: 16,
+          alignment: 'center',
+          color: '#00953B', // Color de la letra: verde
+          absolutePosition: { x: 379, y: 384 }, // Posición debajo del nombre
         },
       ],
     };
