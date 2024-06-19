@@ -73,7 +73,11 @@ function generatePdf(data, callback) {
 
     const date = new Date();
     const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    const formattedDate = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
+    let formattedDate = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
+
+    if (curso === 11) {
+      formattedDate = `${months[date.getMonth()]} de ${date.getFullYear()}`; // Solo mes y año
+    }
 
     let pdfDefinition;
 
@@ -99,7 +103,7 @@ function generatePdf(data, callback) {
             text: formattedDate, // Agregar la fecha
             fontSize: 16,
             alignment: 'center',
-            absolutePosition: { x: 260, y: 395 }, // Posición debajo del nombre
+            absolutePosition: { x: 195, y: 395 }, // Posición debajo del nombre
           },
         ],
       };
@@ -150,3 +154,4 @@ function generatePdf(data, callback) {
     throw error;
   }
 }
+
