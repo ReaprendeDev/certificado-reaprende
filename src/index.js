@@ -75,32 +75,62 @@ function generatePdf(data, callback) {
     const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
     const formattedDate = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
 
-    const pdfDefinition = {
-      pageOrientation: 'landscape',
-      pageSize: 'A4',
-      pageMargins: [0, 0, 0, 0],
-      content: [
-        {
-          image: backgroundImageData,
-          width: 842,
-          height: 595,
-          absolutePosition: { x: 0, y: 0 },
-        },
-        {
-          text: `${data.nombre}`,
-          fontSize: 32,
-          alignment: 'center',
-          absolutePosition: { x: 160, y: 220 },
-        },
-        {
-          text: formattedDate, // Agregar la fecha
-          fontSize: 16,
-          alignment: 'center',
-          color: '#00953B', // Color de la letra: verde
-          absolutePosition: { x: 379, y: 384 }, // Posición debajo del nombre
-        },
-      ],
-    };
+    let pdfDefinition;
+
+    if (curso === 11) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,
+            fontSize: 32,
+            alignment: 'center',
+            absolutePosition: { x: 0, y: 270 },
+          },
+          {
+            text: formattedDate, // Agregar la fecha
+            fontSize: 16,
+            alignment: 'center',
+            absolutePosition: { x: 260, y: 395 }, // Posición debajo del nombre
+          },
+        ],
+      };
+    } else {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,
+            fontSize: 32,
+            alignment: 'center',
+            absolutePosition: { x: 160, y: 220 },
+          },
+          {
+            text: formattedDate, // Agregar la fecha
+            fontSize: 16,
+            alignment: 'center',
+            color: '#00953B', // Color de la letra: verde
+            absolutePosition: { x: 379, y: 384 }, // Posición debajo del nombre
+          },
+        ],
+      };
+    }
 
     const pdfDoc = pdfMake.createPdfKitDocument(pdfDefinition);
 
