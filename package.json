@@ -23,7 +23,7 @@
     "roboto-font": "^0.1.0",
     "uuid": "^9.0.0"
   },
-  "engines": {
-    "node": ">=16.0.0"
+    "engines": {
+    "node": "18.x"
   }
 }
