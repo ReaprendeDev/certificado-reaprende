@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const pdfmake = require('pdfmake');
 const { v4: uuidv4 } = require('uuid');
+const moment = require('moment-timezone');  // Importar moment-timezone
 
 const server = http.createServer((req, res) => {
   if (req.method === 'POST' && req.url === '/src/index') {
@@ -71,12 +72,13 @@ function generatePdf(data, callback) {
 
     const pdfMake = new pdfmake(fonts);
 
-    const date = new Date();
+    // Ajuste de la fecha usando la zona horaria "America/Lima"
+    const date = moment().tz('America/Lima');
     const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    let formattedDate = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
+    let formattedDate = `${date.date()} de ${months[date.month()]} de ${date.year()}`;
 
-    if (curso === 11 || curso === 12 || curso === 13 ||curso === 14) {
-      formattedDate = `${months[date.getMonth()]} de ${date.getFullYear()}`; // Solo mes y año para curso 11 y 12
+    if (curso === 11 || curso === 12 || curso === 13 || curso === 14) {
+      formattedDate = `${months[date.month()]} de ${date.year()}`; // Solo mes y año para curso 11 y 12
     }
 
     let pdfDefinition;
@@ -102,8 +104,8 @@ function generatePdf(data, callback) {
           {
             text: formattedDate, // Agregar la fecha
             fontSize: 16,
-            alignment: 'center',
-            absolutePosition: { x: 195, y: 395 }, // Posición debajo del nombre
+            alignment: 'left',
+            absolutePosition: { x: 469, y: 395 }, // Posición debajo del nombre
           },
         ],
       };
@@ -134,7 +136,7 @@ function generatePdf(data, callback) {
           },
         ],
       };
-      } else if (curso === 13) {
+    } else if (curso === 13) {
       pdfDefinition = {
         pageOrientation: 'landscape',
         pageSize: 'A4',
@@ -161,7 +163,7 @@ function generatePdf(data, callback) {
           },
         ],
       };
-      } else if (curso === 14) {
+    } else if (curso === 14) {
       pdfDefinition = {
         pageOrientation: 'landscape',
         pageSize: 'A4',
@@ -209,9 +211,9 @@ function generatePdf(data, callback) {
           {
             text: formattedDate, // Agregar la fecha
             fontSize: 16,
-            alignment: 'center',
+            alignment: 'left',
             color: '#00953B', // Color de la letra: verde
-            absolutePosition: { x: 379, y: 384 }, // Posición debajo del nombre
+            absolutePosition: { x: 530, y: 384 }, // Posición debajo del nombre
           },
         ],
       };
@@ -235,4 +237,3 @@ function generatePdf(data, callback) {
     throw error;
   }
 }
-
