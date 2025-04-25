@@ -77,7 +77,7 @@ function generatePdf(data, callback) {
     const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
     let formattedDate = `${date.date()} de ${months[date.month()]} de ${date.year()}`;
 
-    if (curso === 11 || curso === 12 || curso === 13 || curso === 14 || curso === 15 || curso === 16 || curso === 17) {
+    if (curso === 11 || curso === 12 || curso === 13 || curso === 14 || curso === 15 || curso === 16 || curso === 17 || curso === 18 || curso === 19) {
       formattedDate = `${months[date.month()]} de ${date.year()}`; // Solo mes y año para curso 11 y 12
     }
 
@@ -245,6 +245,60 @@ function generatePdf(data, callback) {
         ],
       };  
     } else if (curso === 17) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,
+            fontSize: 32,
+            alignment: 'center',
+            absolutePosition: { x: 160, y: 220 },
+          },
+          {
+            text: formattedDate, // Agregar la fecha
+            fontSize: 16,
+            alignment: 'left',
+            color: '#00953B', // Color de la letra: verde
+            absolutePosition: { x: 530, y: 384 }, // Posición debajo del nombre
+          },
+        ],
+      };  
+    } else if (curso === 18) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,
+            fontSize: 32,
+            alignment: 'center',
+            absolutePosition: { x: 160, y: 220 },
+          },
+          {
+            text: formattedDate, // Agregar la fecha
+            fontSize: 16,
+            alignment: 'left',
+            color: '#00953B', // Color de la letra: verde
+            absolutePosition: { x: 530, y: 384 }, // Posición debajo del nombre
+          },
+        ],
+      };  
+    } else if (curso === 19) {
       pdfDefinition = {
         pageOrientation: 'landscape',
         pageSize: 'A4',
