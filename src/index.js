@@ -77,7 +77,7 @@ function generatePdf(data, callback) {
     const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
     let formattedDate = `${date.date()} de ${months[date.month()]} de ${date.year()}`;
 
-    if (curso === 11 || curso === 12 || curso === 13 || curso === 14) {
+    if (curso === 11 || curso === 12 || curso === 13 || curso === 14 || curso === 61) {
       formattedDate = `${months[date.month()]} de ${date.year()}`; // Solo mes y año para curso 11 y 12
     }
 
@@ -131,7 +131,7 @@ function generatePdf(data, callback) {
             text: formattedDate, // Agregar la fecha
             fontSize: 16,
             alignment: 'left',
-            absolutePosition: { x: 480, y: 395 }, // Posición debajo del nombre
+            absolutePosition: { x: 490, y: 394 }, // Posición debajo del nombre
           },
         ],
       };
