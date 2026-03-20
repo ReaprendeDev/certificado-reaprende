@@ -109,6 +109,32 @@ function generatePdf(data, callback) {
           },
         ],
       };
+    } else if (curso === 61) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,
+            fontSize: 32,
+            alignment: 'center',
+            absolutePosition: { x: 0, y: 270 },
+          },
+          {
+            text: formattedDate, // Agregar la fecha
+            fontSize: 16,
+            alignment: 'left',
+            absolutePosition: { x: 469, y: 395 }, // Posición debajo del nombre
+          },
+        ],
+      };
     } else if (curso === 12) {
       pdfDefinition = {
         pageOrientation: 'landscape',
