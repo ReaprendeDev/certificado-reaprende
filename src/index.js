@@ -131,7 +131,7 @@ function generatePdf(data, callback) {
             text: formattedDate, // Agregar la fecha
             fontSize: 16,
             alignment: 'left',
-            absolutePosition: { x: 500, y: 393 }, // Posición debajo del nombre
+            absolutePosition: { x: 495, y: 392 }, // Posición debajo del nombre
           },
         ],
       };
