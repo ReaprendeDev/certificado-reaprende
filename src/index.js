@@ -374,7 +374,7 @@ function generatePdf(data, callback) {
             fontSize: 16,
             alignment: 'left',
             color: '#000000', // Color de la letra
-            absolutePosition: { x: 535, y: 384 }, // Posición debajo del nombre
+            absolutePosition: { x: 538, y: 384 }, // Posición debajo del nombre
           },
         ],
       };  
