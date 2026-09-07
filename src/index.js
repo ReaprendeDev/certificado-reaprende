@@ -367,14 +367,14 @@ function generatePdf(data, callback) {
             text: `${data.nombre}`,
             fontSize: 32,
             alignment: 'center',
-            absolutePosition: { x: 0, y: 220 },
+            absolutePosition: { x: 0, y: 230 },
           },
           {
             text: formattedDate, // Agregar la fecha
             fontSize: 16,
             alignment: 'left',
             color: '#000000', // Color de la letra
-            absolutePosition: { x: 540, y: 384 }, // Posición debajo del nombre
+            absolutePosition: { x: 440, y: 584 }, // Posición debajo del nombre
           },
         ],
       };  
