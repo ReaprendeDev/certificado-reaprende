@@ -367,7 +367,7 @@ function generatePdf(data, callback) {
             text: `${data.nombre}`,
             fontSize: 32,
             alignment: 'center',
-            absolutePosition: { x: 160, y: 220 },
+            absolutePosition: { x: 0, y: 220 },
           },
           {
             text: formattedDate, // Agregar la fecha
