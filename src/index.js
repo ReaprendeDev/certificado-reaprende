@@ -364,13 +364,13 @@ function generatePdf(data, callback) {
             absolutePosition: { x: 0, y: 0 },
           },
           {
-            text: `${data.nombre}`,
+            text: `${data.nombre}`,  // Data del nombre
             fontSize: 38,
-            alignment: 'center',
+            alignment: 'center',        
             absolutePosition: { x: 0, y: 230 },
           },
           {
-            text: formattedDate, // Agregar la fecha
+            text: formattedDate, // Data de la fecha
             fontSize: 16,
             alignment: 'left',
             color: '#000000', // Color de la letra
