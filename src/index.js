@@ -372,9 +372,9 @@ function generatePdf(data, callback) {
           {
             text: formattedDate, // Data de la fecha
             fontSize: 16,
-            alignment: 'left',
+            alignment: 'center',
             color: '#000000', // Color de la letra
-            absolutePosition: { x: 456, y: 462 }, // Posición debajo del nombre
+            absolutePosition: { x: 0, y: 462 }, // Posición debajo del nombre
           },
         ],
       };  
