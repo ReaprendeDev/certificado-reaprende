@@ -403,7 +403,7 @@ function generatePdf(data, callback) {
             fontSize: 16,
             alignment: 'center',
             color: '#575547', // Color de la letra
-            absolutePosition: { x: 85, y: 390 }, // Posición debajo del nombre
+            absolutePosition: { x: 65, y: 394 }, // Posición debajo del nombre
           },
         ],
       }; 
