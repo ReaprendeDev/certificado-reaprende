@@ -407,6 +407,93 @@ function generatePdf(data, callback) {
           },
         ],
       }; 
+      } else if (curso === 69) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,  // Data del nombre
+            fontSize: 38,
+            alignment: 'center',
+            bold: true,
+            color: '#004f91',
+            absolutePosition: { x: 0, y: 230 },
+          },
+          {
+            text: formattedDate, // Data de la fecha
+            fontSize: 16,
+            alignment: 'center',
+            color: '#575547', // Color de la letra
+            absolutePosition: { x: 53, y: 394 }, // Posición debajo del nombre
+          },
+        ],
+      }; 
+      } else if (curso === 70) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,  // Data del nombre
+            fontSize: 38,
+            alignment: 'center',
+            bold: true,
+            color: '#004f91',
+            absolutePosition: { x: 0, y: 230 },
+          },
+          {
+            text: formattedDate, // Data de la fecha
+            fontSize: 16,
+            alignment: 'center',
+            color: '#575547', // Color de la letra
+            absolutePosition: { x: 53, y: 394 }, // Posición debajo del nombre
+          },
+        ],
+      }; 
+      } else if (curso === 71) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,  // Data del nombre
+            fontSize: 38,
+            alignment: 'center',
+            bold: true,
+            color: '#004f91',
+            absolutePosition: { x: 0, y: 230 },
+          },
+          {
+            text: formattedDate, // Data de la fecha
+            fontSize: 16,
+            alignment: 'center',
+            color: '#575547', // Color de la letra
+            absolutePosition: { x: 53, y: 394 }, // Posición debajo del nombre
+          },
+        ],
+      }; 
     } else {
       pdfDefinition = {
         pageOrientation: 'landscape',
