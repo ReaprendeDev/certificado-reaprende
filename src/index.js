@@ -430,9 +430,9 @@ function generatePdf(data, callback) {
           {
             text: formattedDate, // Data de la fecha
             fontSize: 16,
-            alignment: 'center',
+            alignment: 'left',
             color: '#575547', // Color de la letra
-            absolutePosition: { x: 53, y: 394 }, // Posición debajo del nombre
+            absolutePosition: { x: 354, y: 394 }, // Posición debajo del nombre
           },
         ],
       }; 
@@ -459,9 +459,9 @@ function generatePdf(data, callback) {
           {
             text: formattedDate, // Data de la fecha
             fontSize: 16,
-            alignment: 'center',
+            alignment: 'left',
             color: '#575547', // Color de la letra
-            absolutePosition: { x: 53, y: 394 }, // Posición debajo del nombre
+            absolutePosition: { x: 354, y: 394 }, // Posición debajo del nombre
           },
         ],
       }; 
@@ -488,9 +488,9 @@ function generatePdf(data, callback) {
           {
             text: formattedDate, // Data de la fecha
             fontSize: 16,
-            alignment: 'center',
+            alignment: 'left',
             color: '#575547', // Color de la letra
-            absolutePosition: { x: 53, y: 394 }, // Posición debajo del nombre
+            absolutePosition: { x: 354, y: 394 }, // Posición debajo del nombre
           },
         ],
       }; 
