@@ -393,7 +393,7 @@ function generatePdf(data, callback) {
           {
             text: `${data.nombre}`,  // Data del nombre
             fontSize: 38,
-            alignment: 'center',
+            alignment: 'left',
             bold: true,
             color: '#004f91',
             absolutePosition: { x: 0, y: 230 },
