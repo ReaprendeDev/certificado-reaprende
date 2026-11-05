@@ -512,15 +512,15 @@ function generatePdf(data, callback) {
             fontSize: 38,
             alignment: 'center',
             bold: true,
-            color: '#004f91',
-            absolutePosition: { x: 0, y: 230 },
+            color: '#1a1a1a',
+            absolutePosition: { x: 0, y: 220 },
           },
           {
             text: formattedDate, // Data de la fecha
             fontSize: 16,
             alignment: 'left',
             color: '#575547', // Color de la letra
-            absolutePosition: { x: 354, y: 381 }, // Posición debajo del nombre
+            absolutePosition: { x: 476, y: 365 }, // Posición debajo del nombre
           },
         ],
       }; 
