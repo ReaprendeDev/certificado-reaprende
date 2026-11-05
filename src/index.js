@@ -495,7 +495,7 @@ function generatePdf(data, callback) {
         ],
       }; 
 
- } else if (curso === 73) { // CAPEVEDI
+ } else if ([73, 74, 75, 76].includes(curso)) { // CAPEVEDI
       pdfDefinition = {
         pageOrientation: 'landscape',
         pageSize: 'A4',
