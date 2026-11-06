@@ -495,7 +495,7 @@ function generatePdf(data, callback) {
         ],
       }; 
 
- } else if ([73, 74, 75, 76].includes(curso)) { // CAPEVEDI
+ } else if ([73, 74, 75].includes(curso)) { // CAPEVEDI
       pdfDefinition = {
         pageOrientation: 'landscape',
         pageSize: 'A4',
@@ -521,6 +521,36 @@ function generatePdf(data, callback) {
             alignment: 'left',
             color: '#575547', // Color de la letra
             absolutePosition: { x: 480, y: 369 }, // Posición debajo del nombre
+          },
+        ],
+      }; 
+
+            } else if (curso === 76) {
+      pdfDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          {
+            image: backgroundImageData,
+            width: 842,
+            height: 595,
+            absolutePosition: { x: 0, y: 0 },
+          },
+          {
+            text: `${data.nombre}`,  // Data del nombre
+            fontSize: 38,
+            alignment: 'center',
+            bold: true,
+            color: '#004f91',
+            absolutePosition: { x: 0, y: 230 },
+          },
+          {
+            text: formattedDate, // Data de la fecha
+            fontSize: 16,
+            alignment: 'left',
+            color: '#575547', // Color de la letra
+            absolutePosition: { x: 480, y: 380 }, // Posición debajo del nombre
           },
         ],
       }; 
